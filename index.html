@@ -69,7 +69,13 @@
           url: queryURL,
           method: "GET"
           }).then(function(response) {
-            $(".weather-view").text(JSON.stringify(response.weather));
+
+          var h2 = $("<h2>");
+          
+            h2.text(city + " (" + moment().format('L') + ")");
+            
+          $(".weather-view").append(h2);          
+            // $(".weather-view").text(JSON.stringify(response.weather));
             // $(".weather-view").text(info);
           console.log(response.weather);
           });
