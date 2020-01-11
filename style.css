@@ -4,3 +4,17 @@
         background-color: black;
         color: white;
 }
+
+.box{
+    border: black;
+background: gray;
+}
+
+.boxred{
+    border: black;
+background:red;
+}
+.item-d {
+    grid-area: 1 / col4-start / last-line / 6;
+    background:red;
+  }
