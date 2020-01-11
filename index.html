@@ -35,7 +35,9 @@
       </div>
         <div class="col-sm-9 item-d">
 
-          <div class="weather-view"></div>
+          <div class="weather-view">
+
+          </div>
 
 
 
@@ -67,8 +69,8 @@
           url: queryURL,
           method: "GET"
           }).then(function(response) {
-           var info=  $("#weather-view").text(JSON.stringify(response.weather.main));
-            $("#weather-view").text(info);
+            $(".weather-view").text(JSON.stringify(response.weather));
+            // $(".weather-view").text(info);
           console.log(response.weather);
           });
       } 
