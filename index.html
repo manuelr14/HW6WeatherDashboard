@@ -71,10 +71,27 @@
           }).then(function(response) {
 
           var h2 = $("<h2>");
+          var p = $("<p>");
+          var p1 =$("<p>");   
+          var p2 =$("<p>");  
+
+            h2.text(city + " (" + moment().format('L') + ") " );
+            $(".weather-view").append(h2);
+            var icon= response.icon;
+            var temp =JSON.stringify(response.temp);
+            p.text("Temperature: " + response.temp);
+            $(".weather-view").append(p);
+           var humid= JSON.stringify(response.humidity);
+           p1.text("Humidity: " + humid);
+            $(".weather-view").append(p1);
+           var wind = JSON.stringify(response.wind);
+           p2.text("Wind Speed " + wind);
+            $(".weather-view").append(p2);
+          //  var uv=  response.
+         
           
-            h2.text(city + " (" + moment().format('L') + ")");
-            
-          $(".weather-view").append(h2);          
+          // $(".weather-view").text();    
+          // $(".weather-view").text();    
             // $(".weather-view").text(JSON.stringify(response.weather));
             // $(".weather-view").text(info);
           console.log(response.weather);
