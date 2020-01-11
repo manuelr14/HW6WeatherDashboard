@@ -60,7 +60,7 @@
            var cities = ["Atlanta"]; 
            
     function displaycityInfo() {
-
+          $(".weather-view").empty();
           var city = $(this).attr("data-name");
           var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",Burundi&appid=" + APIKey;
           console.log(queryURL);
@@ -78,10 +78,10 @@
             h2.text(city + " (" + moment().format('L') + ") " );
             $(".weather-view").append(h2);
             var icon= response.icon;
-            var temp =JSON.stringify(response.temp);
-            p.text("Temperature: " + response.temp);
+            var temp =JSON.stringify(response.main.temp);
+            p.text("Temperature: " + temp);
             $(".weather-view").append(p);
-           var humid= JSON.stringify(response.humidity);
+           var humid= JSON.stringify(response.main.humidity);
            p1.text("Humidity: " + humid);
             $(".weather-view").append(p1);
            var wind = JSON.stringify(response.wind);
