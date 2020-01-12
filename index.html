@@ -49,8 +49,18 @@
 
       <div class="col-sm-9 item-d"> 
 
-        <div class="5days"></div>
-
+        <div class="5days">
+        <div class="dayone"></div>
+        <h2 class="timeone"></h2>
+        <div class="daytwo"></div>
+        <h2 class="timetwo"></h2>
+        <div class="daythree"></div>
+        <h2 class="timethree"></h2>
+        <div class="dayfour"></div>
+        <h2 class="timefour"></h2>
+        <div class="dayfive"></div>
+        <h2 class="timefive"></h2>
+      </div>
       </div>
     </div>
 
@@ -105,10 +115,7 @@
           //  var uv=  response.
          
           
-          // $(".weather-view").text();    
-          // $(".weather-view").text();    
-            // $(".weather-view").text(JSON.stringify(response.weather));
-            // $(".weather-view").text(info);
+    
           console.log(response.weather.icon);
          
           var fivedaysqueryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",us&mode=xml&appid=" + APIKey;
@@ -118,8 +125,13 @@
           url: fivedaysqueryURL,
           method: "GET"
           }).then(function(response) {
-
-
+          
+            $(".timeone").text(moment().add(1, 'days').calendar());
+            $(".timetwo").text(moment().add(2, 'days').calendar());
+            $(".timethree").text(moment().add(3, 'days').calendar());
+            $(".timefour").text(moment().add(4, 'days').calendar());
+            $(".timefive").text(moment().add(5, 'days').calendar());
+        
             
           
 
