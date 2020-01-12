@@ -17,5 +17,5 @@ background:red;
 .item-d {
     grid-area: 1 / col4-start / last-line / 6;
     background:red;
-   float: right; 
+   /* float: right;  */
   }

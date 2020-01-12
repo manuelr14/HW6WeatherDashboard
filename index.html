@@ -32,6 +32,7 @@
 
         </div>
       </div>
+
         <div class="col-sm-9 item-d">
 
           <div class="weather-view">
@@ -44,7 +45,14 @@
 
         </div>
 
+    <div class="row">
 
+      <div class="col-sm-9 item-d"> 
+
+        <div class="5days"></div>
+
+      </div>
+    </div>
 
 
     </div>
@@ -102,11 +110,40 @@
             // $(".weather-view").text(JSON.stringify(response.weather));
             // $(".weather-view").text(info);
           console.log(response.weather.icon);
+         
+          var fivedaysqueryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",us&mode=xml&appid=" + APIKey;
+          console.log(fivedaysqueryURL);
+          // We then created an AJAX call
+          $.ajax({
+          url: fivedaysqueryURL,
+          method: "GET"
+          }).then(function(response) {
+
+
+            
+          
+
+
+      });    
+
+
+
+
           });
-      } 
+      }; 
            
-           
- 
+      // function fivedaysweather(){
+      //   $(".5days").empty();
+         
+        
+        // var city = $(this).attr("data-name");
+
+
+          
+
+
+    
+
           
           
 
@@ -158,6 +195,7 @@
 
       // Calling the renderButtons function to display the initial buttons
       renderButtons();
+    
     </script>
   </div>
 
