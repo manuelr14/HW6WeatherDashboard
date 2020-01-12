@@ -11,9 +11,8 @@
 </head>
 
 <body>
-  <div class="col-sm-12 header">
-    <h1>Weather Dashboard</h1>
-    </div>
+  <div class="col-sm-12 header"><h1>Weather Dashboard</h1></div>
+    
   <div class="container-fluid">
 
 
@@ -22,9 +21,9 @@
         <div class="col-sm-3">
          <h2>Search for a City</h2>
           <form id="city-search">
-            <input type="text" id="city-input"><br>
+            <input type="text" id="city-input">
             <input id="searchButton" type="submit" value="Search">
-          </form>
+          </form> 
 
          
          <!-- display my cities here -->
@@ -36,7 +35,7 @@
         <div class="col-sm-9 item-d">
 
           <div class="weather-view">
-
+            <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
           </div>
 
 
@@ -49,6 +48,7 @@
 
 
     </div>
+
   </div>
 </div>
           
@@ -74,10 +74,14 @@
           var p = $("<p>");
           var p1 =$("<p>");   
           var p2 =$("<p>");  
+          
+            
 
-            h2.text(city + " (" + moment().format('L') + ") " );
+
+            h2.text(city + " (" + moment().format('L') + ")" + icon );
             $(".weather-view").append(h2);
-            var icon= response.icon;
+            var icon= JSON.stringify(response.weather.icon);
+            console.log(icon);
             var temp =JSON.stringify(response.main.temp);
             p.text("Temperature: " + temp);
             $(".weather-view").append(p);
@@ -87,6 +91,9 @@
            var wind = JSON.stringify(response.wind);
            p2.text("Wind Speed " + wind);
             $(".weather-view").append(p2);
+
+            var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+            $('#wicon').attr('src', iconurl);
           //  var uv=  response.
          
           
@@ -94,7 +101,7 @@
           // $(".weather-view").text();    
             // $(".weather-view").text(JSON.stringify(response.weather));
             // $(".weather-view").text(info);
-          console.log(response.weather);
+          console.log(response.weather.icon);
           });
       } 
            
