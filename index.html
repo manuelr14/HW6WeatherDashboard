@@ -116,8 +116,8 @@
            var humid= JSON.stringify(response.main.humidity);
            p1.text("Humidity: " + humid);
             $(".weather-view").append(p1);
-           var wind = JSON.stringify(response.wind);
-           p2.text("Wind Speed " + wind);
+           var wind = JSON.stringify(response.wind.speed);
+           p2.text("Wind Speed: " + wind + "MPH");
             $(".weather-view").append(p2);
 
             var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
