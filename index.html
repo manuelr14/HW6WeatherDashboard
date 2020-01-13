@@ -111,7 +111,8 @@
             // $(".weather-view").append(img);
             
             var temp =JSON.stringify(response.main.temp);
-            p.text("Temperature: " + temp);
+            var temFarenheit= (((temp-273.15)*1.80)+32).toFixed(2);
+            p.text("Temperature: " + temFarenheit + " F");
             $(".weather-view").append(p);
            var humid= JSON.stringify(response.main.humidity);
            p1.text("Humidity: " + humid);
