@@ -145,7 +145,7 @@
             var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
             $('.daytwo').attr('src', iconurl);
             console.log(iconurl);
-            console.log(response.weather.icon);
+   
          
           var fivedaysqueryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",us&appid=" + APIKey;
           console.log(fivedaysqueryURL);
@@ -160,11 +160,21 @@
             $(".timethree").text(moment().add(3, 'days').calendar());
             $(".timefour").text(moment().add(4, 'days').calendar());
             $(".timefive").text(moment().add(5, 'days').calendar());
+
+            console.log(fivedaysqueryURL);
         
-            console.log(JSON.stringify(responsefivedays.main.temp));
-          
-
-
+            var temp1= (JSON.stringify(responsefivedays.list[4].main.temp));
+            var tempd1= (((temp1-273.15)*1.80)+32).toFixed(2);
+            console.log(responsefivedays.list[0].main.humidity);
+            console.log(JSON.stringify(responsefivedays.list[0].weather[0].icon));
+            var temp2= (JSON.stringify(responsefivedays.list[12].main.temp));
+            var tempd2= (((temp2-273.15)*1.80)+32).toFixed(2);
+            var temp3= (JSON.stringify(responsefivedays.list[20].main.temp));
+            var tempd3= (((temp3-273.15)*1.80)+32).toFixed(2);
+            var temp4= (JSON.stringify(responsefivedays.list[28].main.temp));
+            var tempd4= (((temp4-273.15)*1.80)+32).toFixed(2);
+            var temp5= (JSON.stringify(responsefivedays.list[36].main.temp));
+            var tempd5= (((temp5-273.15)*1.80)+32).toFixed(2);
       });    
 
   
