@@ -14,13 +14,16 @@
         border-style: solid;
         border-width: 1px;
         border-color:silver;
+        
 
 }
 
 
 .box{
     border: black;
-background: gray;
+background:#41A0F3;
+border-width: 1px;
+padding: 5px;
 }
 
 
