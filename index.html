@@ -13,48 +13,63 @@
 <body>
 
     <div class="grid-container">
-        <div class="item1">Weather Dashboard</div>
-        <div class="item2">
+        <div class="item1 black">Weather Dashboard</div>
+       
+      
+        <div class="item2 menu">
             
-          <h2>Search for a City</h2>
+          <p>Search for a City</p>
             <form id="city-search">
               <input type="text" id="city-input">
               <input id="searchButton" type="submit" value="Search">
             </form> 
             <div id="buttons-view"></div>
         </div>
-        <div class="item3">
+        <div class="item3 main">
 
             <div class="weather-view">
-                <div id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+                <!-- <img class= "weathericon" src=" " alt="weaher icon">  -->
               </div>
     
 
 
         </div>  
         
-        <div class="item5">
+        <div class="item4">
 
             <div class="5days">
                 <div class="dayone">
                 <h2 class="timeone"></h2>
                 <p class="tempone"></p>
-              </div>
-                <div class="daytwo"></div>
-                <h2 class="timetwo"></h2>
-                <div class="daythree"></div>
-                <h2 class="timethree"></h2>
-                <div class="dayfour"></div>
-                <h2 class="timefour"></h2>
-                <div class="dayfive"></div>
-                <h2 class="timefive"></h2>
-              </div>
-              </div>
             </div>
+
         </div>
-      </div>
+        <div class="item5">
+            <div class="daytwo"></div>
+            <h2 class="timetwo"></h2>
+    </div>
+       
+    <div class="item6">
+        <div class="daythree"></div>
+        <h2 class="timethree"></h2>
+ </div>
+      
+ <div class="item7">
+        <div class="dayfour"></div>
+        <h2 class="timefour"></h2>
+  </div>
+        
+  <div class="item8">
+        <div class="dayfive"></div>
+        <h2 class="timefive"></h2>
+  </div>
+   
+
+</div>
 
 
+        </div>    
+  
 
           
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -79,14 +94,22 @@
           var p = $("<p>");
           var p1 =$("<p>");   
           var p2 =$("<p>");  
+          var img=$("<img>");
           
             
 
-
-            h2.text(city + " (" + moment().format('L') + ")" + icon );
-            $(".weather-view").append(h2);
-            var icon= JSON.stringify(response.weather.icon);
+              var icon=(response.weather[0].icon);
             console.log(icon);
+            var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+            // $('.weathericon').attr('src', iconurl);
+            console.log(iconurl);
+            h2.text(city + " (" + moment().format('L') + ")");
+            img.attr('src',iconurl);
+            h2.append(img)
+            $(".weather-view").append(h2);
+            
+            // $(".weather-view").append(img);
+            
             var temp =JSON.stringify(response.main.temp);
             p.text("Temperature: " + temp);
             $(".weather-view").append(p);
@@ -98,7 +121,8 @@
             $(".weather-view").append(p2);
 
             var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
-            $('#wicon').attr('src', iconurl);
+            $('.daytwo').attr('src', iconurl);
+            console.log(iconurl);
           //  var uv=  response.
          
           
