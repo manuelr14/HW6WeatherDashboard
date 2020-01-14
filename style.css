@@ -8,6 +8,7 @@
 .menu{
 
     background-color: rgb(230, 233, 235);
+    /* text-align: left; */
 }
 
 .main{
@@ -24,6 +25,7 @@
 background:#41A0F3;
 border-width: 1px;
 padding: 5px;
+border-radius: 5px;
 }
 
 
