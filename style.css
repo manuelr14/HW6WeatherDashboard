@@ -19,6 +19,18 @@
 
 }
 
+.city{
+    border-width: 1px;
+    border-style: solid;
+    border-color: silver;
+    color:silver;
+    margin:0px;
+    background-color: white;
+    font-size: 20px;
+    align-content: left;
+
+}
+
 
 .box{
     border: black;
@@ -28,14 +40,13 @@ padding: 5px;
 border-radius: 5px;
 }
 
-
-
-
-
-.boxred{
-    border: black;
-background:red;
+.buttons-view{
+    list-style-type:none;
 }
+
+
+
+
 .item-d {
     grid-area: 1 / col4-start / last-line / 6;
     background:red;
