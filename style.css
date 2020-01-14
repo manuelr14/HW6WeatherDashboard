@@ -15,6 +15,7 @@
         border-style: solid;
         border-width: 1px;
         border-color:silver;
+        font-size: 30px;
         
 
 }
@@ -33,11 +34,14 @@
 
 
 .box{
-    border: black;
+    /* border: black; */
 background:#41A0F3;
-border-width: 1px;
+
+border-width: 5px;
 padding: 5px;
 border-radius: 5px;
+color:white;
+font-size: 15px;
 }
 
 .buttons-view{
@@ -77,5 +81,5 @@ border-radius: 5px;
   /* background-color: rgba(255, 255, 255, 0.8); */
   text-align: center;
   padding: 20px 0;
-  font-size: 30px;
+  /* font-size: 30px; */
 }
