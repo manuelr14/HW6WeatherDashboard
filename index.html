@@ -56,14 +56,14 @@
   </div> 
   <div class="item5 box">
       <div class="daytwo"></div>
-      <h2 class="time2"></h2>
+      <p class="time2"></p>
       <img class="icon2"></img>
       <p class="temp2"></p>
       <p class="humi2"></p>
 </div>
     <div class="item6 box">
         <div class="daythree"></div>
-        <h2 class="time3"></h2>
+        <p class="time3"></p>
         <img class="icon3"></img>
         <p class="temp3"></p>
         <p class="humi3"></p>
@@ -71,7 +71,7 @@
   
  <div class="item7 box">
         <div class="dayfour"></div>
-        <h2 class="time4"></h2>
+        <p class="time4"></p>
         <img class="icon4"></img>
         <p class="temp4"></p>
         <p class="humi4"></p>
@@ -79,7 +79,7 @@
      
   <div class="item8 box">
         <div class="dayfive"></div>
-        <h2 class="time5"></h2>
+        <p class="time5"></p>
         <img class="icon5"></img>
         <p class="temp5"></p>
         <p class="humi5"></p>
@@ -190,22 +190,55 @@
             var temp1= (JSON.stringify(responsefivedays.list[4].main.temp));
             var tempd1= (((temp1-273.15)*1.80)+32).toFixed(2);
             var humidity1= responsefivedays.list[0].main.humidity;
-            var icon1= JSON.stringify(responsefivedays.list[0].weather[0].icon);
+            var icon1= responsefivedays.list[0].weather[0].icon;
             var urlicon1="http://openweathermap.org/img/w/"+icon1+".png"
             console.log(icon1);
             var temp2= (JSON.stringify(responsefivedays.list[12].main.temp));
             var tempd2= (((temp2-273.15)*1.80)+32).toFixed(2);
+            var humidity2= responsefivedays.list[12].main.humidity;
+            var icon2= responsefivedays.list[12].weather[0].icon;
+            var urlicon2="http://openweathermap.org/img/w/"+icon2+".png"
+
             var temp3= (JSON.stringify(responsefivedays.list[20].main.temp));
             var tempd3= (((temp3-273.15)*1.80)+32).toFixed(2);
+            var humidity3= responsefivedays.list[20].main.humidity;
+            var icon3= responsefivedays.list[20].weather[0].icon;
+            var urlicon3="http://openweathermap.org/img/w/"+icon3+".png"
+
             var temp4= (JSON.stringify(responsefivedays.list[28].main.temp));
             var tempd4= (((temp4-273.15)*1.80)+32).toFixed(2);
+            var humidity4= responsefivedays.list[28].main.humidity;
+            var icon4= responsefivedays.list[28].weather[0].icon;
+            var urlicon4="http://openweathermap.org/img/w/"+icon4+".png"
+
             var temp5= (JSON.stringify(responsefivedays.list[36].main.temp));
             var tempd5= (((temp5-273.15)*1.80)+32).toFixed(2);
-            
+            var humidity5= responsefivedays.list[36].main.humidity;
+            var icon5= responsefivedays.list[36].weather[0].icon;
+            var urlicon5="http://openweathermap.org/img/w/"+icon5+".png"
+
+
+ 
+
             $(".icon1").attr('src',urlicon1);
-            $(".temp1").text("Temperature: " + (((temp-273.15)*1.80)+32).toFixed(2) + " F");
+            $(".temp1").text("Temperature: " + (((temp1-273.15)*1.80)+32).toFixed(2) + " F");
             $(".humi1").text("Humidity: " + humidity1 + " %");
 
+            $(".icon2").attr('src',urlicon2);
+            $(".temp2").text("Temperature: " + (((temp2-273.15)*1.80)+32).toFixed(2) + " F");
+            $(".humi2").text("Humidity: " + humidity2 + " %");
+
+            $(".icon3").attr('src',urlicon3);
+            $(".temp3").text("Temperature: " + (((temp3-273.15)*1.80)+32).toFixed(2) + " F");
+            $(".humi3").text("Humidity: " + humidity3 + " %");
+
+            $(".icon4").attr('src',urlicon4);
+            $(".temp4").text("Temperature: " + (((temp4-273.15)*1.80)+32).toFixed(2) + " F");
+            $(".humi4").text("Humidity: " + humidity4 + " %");
+
+            $(".icon5").attr('src',urlicon5);
+            $(".temp5").text("Temperature: " + (((temp5-273.15)*1.80)+32).toFixed(2) + " F");
+            $(".humi5").text("Humidity: " + humidity5 + " %");
 
 
       });    
