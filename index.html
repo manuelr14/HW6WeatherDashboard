@@ -179,11 +179,11 @@
           method: "GET"
           }).then(function(responsefivedays) {
             
-            $(".time1").text(moment().add(1, 'days').calendar());
-            $(".time2").text(moment().add(2, 'days').calendar());
-            $(".time3").text(moment().add(3, 'days').calendar());
-            $(".time4").text(moment().add(4, 'days').calendar());
-            $(".time5").text(moment().add(5, 'days').calendar());
+            $(".time1").text(moment().add(1, 'days').calendar('L'));
+            $(".time2").text(moment().add(2, 'days').calendar('L'));
+            $(".time3").text(moment().add(3, 'days').calendar('L'));
+            $(".time4").text(moment().add(4, 'days').calendar('L'));
+            $(".time5").text(moment().add(5, 'days').calendar('L'));
 
             console.log(fivedaysqueryURL);
         
