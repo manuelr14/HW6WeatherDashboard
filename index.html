@@ -99,13 +99,169 @@
            var APIKey = "763167165282088382d8a33e553ea68c";
            
            var cities = ["Atlanta"]; 
+displaycityInfo1();
+           function displaycityInfo1() {
+         
+      
+         $(".weather-view").empty();
+   
+             var city = "atlanta";
+             var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",Burundi&appid=" + APIKey;
+             console.log(queryURL);
+             // We then created an AJAX call
+             $.ajax({
+             url: queryURL,
+             method: "GET"
+             }).then(function(response) {
+   
+             var h2 = $("<h2>");
+             var p = $("<p>");
+             var p1 =$("<p>");   
+             var p2 =$("<p>");  
+             var img=$("<img>");
+             var p3= $("<p>");
+             
+               
+   
+                 var icon=(response.weather[0].icon);
+               console.log(icon);
+               var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+               // $('.weathericon').attr('src', iconurl);
+               console.log(iconurl);
+               h2.text(city + " (" + moment().format('L') + ")");
+               img.attr('src',iconurl);
+               h2.append(img)
+               $(".weather-view").append(h2);
+               
+               // $(".weather-view").append(img);
+               
+               var temp =JSON.stringify(response.main.temp);
+               var temFarenheit= (((temp-273.15)*1.80)+32).toFixed(2);
+               p.text("Temperature: " + temFarenheit + " F");
+               $(".weather-view").append(p);
+              var humid= JSON.stringify(response.main.humidity);
+              p1.text("Humidity: " + humid + "%");
+               $(".weather-view").append(p1);
+              var wind = JSON.stringify(response.wind.speed);
+              p2.text("Wind Speed: " + wind + " MPH");
+               $(".weather-view").append(p2);
+   
+               var lon = (response.coord.lon);
+               var lat = (response.coord.lat);
+               console.log(lon);
+               console.log(lat);
+       
+             
+               var queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?appid=763167165282088382d8a33e553ea68c"+ "&lat=" + lat + "&lon=" + lon;  
+     
+           
+             
+               $.ajax({
+               url: queryURLUV,
+               method: "GET"
+               }).then(function(responseUV) {
+                 console.log(queryURLUV);
+                 var UV=responseUV.value;
+                 p3.text("UV: " + UV );
+               $(".weather-view").append(p3);
+               });
+               
+               var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+               $('.daytwo').attr('src', iconurl);
+               console.log(iconurl);
+      
+            
+             var fivedaysqueryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",us&appid=" + APIKey;
+             console.log(fivedaysqueryURL);
+             // We then created an AJAX call
+             $.ajax({
+             url: fivedaysqueryURL,
+             method: "GET"
+             }).then(function(responsefivedays) {
+               
+               $(".time1").text(moment().add(1, 'days').calendar('L'));
+               $(".time2").text(moment().add(2, 'days').calendar('L'));
+               $(".time3").text(moment().add(3, 'days').calendar('L'));
+               $(".time4").text(moment().add(4, 'days').calendar('L'));
+               $(".time5").text(moment().add(5, 'days').calendar('L'));
+   
+               
+               console.log(fivedaysqueryURL);
+           
+               var temp1= (JSON.stringify(responsefivedays.list[4].main.temp));
+               var tempd1= (((temp1-273.15)*1.80)+32).toFixed(2);
+               var humidity1= responsefivedays.list[0].main.humidity;
+               var icon1= responsefivedays.list[0].weather[0].icon;
+               var urlicon1="http://openweathermap.org/img/w/"+icon1+".png"
+               console.log(icon1);
+               var temp2= (JSON.stringify(responsefivedays.list[12].main.temp));
+               var tempd2= (((temp2-273.15)*1.80)+32).toFixed(2);
+               var humidity2= responsefivedays.list[12].main.humidity;
+               var icon2= responsefivedays.list[12].weather[0].icon;
+               var urlicon2="http://openweathermap.org/img/w/"+icon2+".png"
+   
+               var temp3= (JSON.stringify(responsefivedays.list[20].main.temp));
+               var tempd3= (((temp3-273.15)*1.80)+32).toFixed(2);
+               var humidity3= responsefivedays.list[20].main.humidity;
+               var icon3= responsefivedays.list[20].weather[0].icon;
+               var urlicon3="http://openweathermap.org/img/w/"+icon3+".png"
+   
+               var temp4= (JSON.stringify(responsefivedays.list[28].main.temp));
+               var tempd4= (((temp4-273.15)*1.80)+32).toFixed(2);
+               var humidity4= responsefivedays.list[28].main.humidity;
+               var icon4= responsefivedays.list[28].weather[0].icon;
+               var urlicon4="http://openweathermap.org/img/w/"+icon4+".png"
+   
+               var temp5= (JSON.stringify(responsefivedays.list[36].main.temp));
+               var tempd5= (((temp5-273.15)*1.80)+32).toFixed(2);
+               var humidity5= responsefivedays.list[36].main.humidity;
+               var icon5= responsefivedays.list[36].weather[0].icon;
+               var urlicon5="http://openweathermap.org/img/w/"+icon5+".png"
+   
+   
+    
+   
+               $(".icon1").attr('src',urlicon1);
+               $(".temp1").text("Temperature: " + (((temp1-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi1").text("Humidity: " + humidity1 + " %");
+   
+               $(".icon2").attr('src',urlicon2);
+               $(".temp2").text("Temperature: " + (((temp2-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi2").text("Humidity: " + humidity2 + " %");
+   
+               $(".icon3").attr('src',urlicon3);
+               $(".temp3").text("Temperature: " + (((temp3-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi3").text("Humidity: " + humidity3 + " %");
+   
+               $(".icon4").attr('src',urlicon4);
+               $(".temp4").text("Temperature: " + (((temp4-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi4").text("Humidity: " + humidity4 + " %");
+   
+               $(".icon5").attr('src',urlicon5);
+               $(".temp5").text("Temperature: " + (((temp5-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi5").text("Humidity: " + humidity5 + " %");
+   
+   
+         });    
+   
+     
+     
+   
+   
+   
+             });
+         }; 
+           
+
+
+
            
     function displaycityInfo() {
          
       
       $(".weather-view").empty();
-
-          var city = $(this).attr("data-name");
+var city = $("#city-input").val().trim();
+          
           var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",Burundi&appid=" + APIKey;
           console.log(queryURL);
           // We then created an AJAX call
@@ -185,6 +341,7 @@
             $(".time4").text(moment().add(4, 'days').calendar('L'));
             $(".time5").text(moment().add(5, 'days').calendar('L'));
 
+            
             console.log(fivedaysqueryURL);
         
             var temp1= (JSON.stringify(responsefivedays.list[4].main.temp));
@@ -250,8 +407,162 @@
 
           });
       }; 
-        
 
+
+   
+           function displaycityInfo3() {
+         
+      
+         $(".weather-view").empty();
+   
+         var city = $(this).attr("data-name");
+             var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + ",Burundi&appid=" + APIKey;
+             console.log(queryURL);
+             // We then created an AJAX call
+             $.ajax({
+             url: queryURL,
+             method: "GET"
+             }).then(function(response) {
+   
+             var h2 = $("<h2>");
+             var p = $("<p>");
+             var p1 =$("<p>");   
+             var p2 =$("<p>");  
+             var img=$("<img>");
+             var p3= $("<p>");
+             
+               
+   
+                 var icon=(response.weather[0].icon);
+               console.log(icon);
+               var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+               // $('.weathericon').attr('src', iconurl);
+               console.log(iconurl);
+               h2.text(city + " (" + moment().format('L') + ")");
+               img.attr('src',iconurl);
+               h2.append(img)
+               $(".weather-view").append(h2);
+               
+               // $(".weather-view").append(img);
+               
+               var temp =JSON.stringify(response.main.temp);
+               var temFarenheit= (((temp-273.15)*1.80)+32).toFixed(2);
+               p.text("Temperature: " + temFarenheit + " F");
+               $(".weather-view").append(p);
+              var humid= JSON.stringify(response.main.humidity);
+              p1.text("Humidity: " + humid + "%");
+               $(".weather-view").append(p1);
+              var wind = JSON.stringify(response.wind.speed);
+              p2.text("Wind Speed: " + wind + " MPH");
+               $(".weather-view").append(p2);
+   
+               var lon = (response.coord.lon);
+               var lat = (response.coord.lat);
+               console.log(lon);
+               console.log(lat);
+       
+             
+               var queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?appid=763167165282088382d8a33e553ea68c"+ "&lat=" + lat + "&lon=" + lon;  
+     
+           
+             
+               $.ajax({
+               url: queryURLUV,
+               method: "GET"
+               }).then(function(responseUV) {
+                 console.log(queryURLUV);
+                 var UV=responseUV.value;
+                 p3.text("UV: " + UV );
+               $(".weather-view").append(p3);
+               });
+               
+               var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+               $('.daytwo').attr('src', iconurl);
+               console.log(iconurl);
+      
+            
+             var fivedaysqueryURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + city + ",us&appid=" + APIKey;
+             console.log(fivedaysqueryURL);
+             // We then created an AJAX call
+             $.ajax({
+             url: fivedaysqueryURL,
+             method: "GET"
+             }).then(function(responsefivedays) {
+               
+               $(".time1").text(moment().add(1, 'days').calendar('L'));
+               $(".time2").text(moment().add(2, 'days').calendar('L'));
+               $(".time3").text(moment().add(3, 'days').calendar('L'));
+               $(".time4").text(moment().add(4, 'days').calendar('L'));
+               $(".time5").text(moment().add(5, 'days').calendar('L'));
+   
+               
+               console.log(fivedaysqueryURL);
+           
+               var temp1= (JSON.stringify(responsefivedays.list[4].main.temp));
+               var tempd1= (((temp1-273.15)*1.80)+32).toFixed(2);
+               var humidity1= responsefivedays.list[0].main.humidity;
+               var icon1= responsefivedays.list[0].weather[0].icon;
+               var urlicon1="http://openweathermap.org/img/w/"+icon1+".png"
+               console.log(icon1);
+               var temp2= (JSON.stringify(responsefivedays.list[12].main.temp));
+               var tempd2= (((temp2-273.15)*1.80)+32).toFixed(2);
+               var humidity2= responsefivedays.list[12].main.humidity;
+               var icon2= responsefivedays.list[12].weather[0].icon;
+               var urlicon2="http://openweathermap.org/img/w/"+icon2+".png"
+   
+               var temp3= (JSON.stringify(responsefivedays.list[20].main.temp));
+               var tempd3= (((temp3-273.15)*1.80)+32).toFixed(2);
+               var humidity3= responsefivedays.list[20].main.humidity;
+               var icon3= responsefivedays.list[20].weather[0].icon;
+               var urlicon3="http://openweathermap.org/img/w/"+icon3+".png"
+   
+               var temp4= (JSON.stringify(responsefivedays.list[28].main.temp));
+               var tempd4= (((temp4-273.15)*1.80)+32).toFixed(2);
+               var humidity4= responsefivedays.list[28].main.humidity;
+               var icon4= responsefivedays.list[28].weather[0].icon;
+               var urlicon4="http://openweathermap.org/img/w/"+icon4+".png"
+   
+               var temp5= (JSON.stringify(responsefivedays.list[36].main.temp));
+               var tempd5= (((temp5-273.15)*1.80)+32).toFixed(2);
+               var humidity5= responsefivedays.list[36].main.humidity;
+               var icon5= responsefivedays.list[36].weather[0].icon;
+               var urlicon5="http://openweathermap.org/img/w/"+icon5+".png"
+   
+   
+    
+   
+               $(".icon1").attr('src',urlicon1);
+               $(".temp1").text("Temperature: " + (((temp1-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi1").text("Humidity: " + humidity1 + " %");
+   
+               $(".icon2").attr('src',urlicon2);
+               $(".temp2").text("Temperature: " + (((temp2-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi2").text("Humidity: " + humidity2 + " %");
+   
+               $(".icon3").attr('src',urlicon3);
+               $(".temp3").text("Temperature: " + (((temp3-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi3").text("Humidity: " + humidity3 + " %");
+   
+               $(".icon4").attr('src',urlicon4);
+               $(".temp4").text("Temperature: " + (((temp4-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi4").text("Humidity: " + humidity4 + " %");
+   
+               $(".icon5").attr('src',urlicon5);
+               $(".temp5").text("Temperature: " + (((temp5-273.15)*1.80)+32).toFixed(2) + " F");
+               $(".humi5").text("Humidity: " + humidity5 + " %");
+   
+   
+         });    
+   
+     
+     
+   
+   
+   
+             });
+         }; 
+
+ 
 
  
 function renderButtons() {
@@ -295,8 +606,7 @@ function renderButtons() {
         // Adding the movie from the textbox to our array
         cities.push(city);
         console.log(cities);
-
-
+displaycityInfo();
         // Calling renderButtons which handles the processing of our movie array
         renderButtons();
       
@@ -304,11 +614,12 @@ function renderButtons() {
 
       // Function for displaying the city info
       // Using $(document).on instead of $(".city).on to add event listeners to dynamically generated elements
-      $(document).on("click", ".city", displaycityInfo);
+      $(document).on("click", ".city", displaycityInfo3);
 
       // Calling the renderButtons function to display the initial buttons
       renderButtons();
     
+
     </script>
   </div>
 
